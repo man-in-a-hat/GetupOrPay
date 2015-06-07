@@ -1,5 +1,8 @@
 'use strict';
 
+var React = require('react');
+var Menu = require('./menu.react.jsx');
+
 var TextMessage = React.createClass({
   render: function() {
     return (
@@ -10,3 +13,5 @@ var TextMessage = React.createClass({
     );
   }
 });
+
+module.exports = TextMessage;
