@@ -25,7 +25,7 @@ var LoginPage = React.createClass({
         </form>
         <Row>
           <Col xsOffset={3} xs={6}>
-            <Button bsStyle="primary" bsSize="large" block>Login</Button>
+            <Button href="#/payment" bsStyle="primary" bsSize="large" block>Login</Button>
           </Col>
         </Row>
       </div>

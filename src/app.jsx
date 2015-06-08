@@ -9,8 +9,8 @@ var DestinationPage = require('./pages/destination.page');
 var routes = {
   '/login': LoginPage,
   '/signup': SignupPage,
-  '/payment': PaymentPage
-  // '/destination': DestinationPage
+  '/payment': PaymentPage,
+  '/destination': DestinationPage
 };
 
 var router = Router(routes);

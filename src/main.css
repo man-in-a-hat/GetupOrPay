@@ -24,3 +24,7 @@ form {
 .form-group {
   margin-top: 15px;
 }
+
+table {
+  background-color: white;
+}

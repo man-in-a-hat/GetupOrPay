@@ -13,7 +13,7 @@ var PaymentPage = React.createClass({
     return (
       <div className="container vcenter">
         <Row>
-          <h3 className="text-center">Payment data</h3>
+          <h3 className="text-center"><Label>Payment data</Label></h3>
         </Row>
         <form>
           <Input type="number" placeholder="Card Number" />
@@ -22,7 +22,7 @@ var PaymentPage = React.createClass({
         </form>
         <Row>
           <Col xsOffset={3} xs={6}>
-            <Button bsStyle="primary" bsSize="large" block>Save to Stripe</Button>
+            <Button href="#/destination" bsStyle="primary" bsSize="large" block>Save to Stripe</Button>
           </Col>
         </Row>
       </div>
