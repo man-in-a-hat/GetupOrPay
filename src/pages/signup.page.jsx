@@ -26,7 +26,7 @@ var SignupPage = React.createClass({
         </form>
         <Row>
           <Col xsOffset={3} xs={6}>
-            <Button bsStyle="primary" bsSize="large" block>Signup</Button>
+            <Button href="#/payment" bsStyle="primary" bsSize="large" block>Signup</Button>
           </Col>
         </Row>
       </div>
