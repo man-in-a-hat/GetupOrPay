@@ -11,18 +11,18 @@ var PaymentPage = React.createClass({
 
   render: function() {
     return (
-      <div className="container vcenter">
+      <div className="container vcenter text-center">
         <Row>
-          <h3 className="text-center">Payment data</h3>
+          <h3><Label>Payment data</Label></h3>
         </Row>
-        <form>
+        <form className="margin-spacious">
           <Input type="number" placeholder="Card Number" />
           <Input type="date" placeholder="Expiration Date" />
           <Input type="number" placeholder="CVC" />
         </form>
         <Row>
           <Col xsOffset={3} xs={6}>
-            <Button bsStyle="primary" bsSize="large" block>Save to Stripe</Button>
+            <Button href="#/account" bsStyle="primary" bsSize="large" block>Save to Stripe</Button>
           </Col>
         </Row>
       </div>
@@ -31,7 +31,7 @@ var PaymentPage = React.createClass({
 
 });
 
-module.exports = function Payment() {
+module.exports = function () {
 
   React.render(
     <PaymentPage />,

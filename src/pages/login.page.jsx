@@ -19,13 +19,13 @@ var LoginPage = React.createClass({
             <Button href="#/signup" block>Signup</Button>
           </Col>
         </Row>
-        <form>
+        <form className="margin-spacious">
           <Input type="email" placeholder="Email Address" />
           <Input type="password" placeholder="Password" />
         </form>
         <Row>
           <Col xsOffset={3} xs={6}>
-            <Button bsStyle="primary" bsSize="large" block>Login</Button>
+            <Button href="#/payment" bsStyle="primary" bsSize="large" block>Login</Button>
           </Col>
         </Row>
       </div>
@@ -34,7 +34,7 @@ var LoginPage = React.createClass({
 
 });
 
-module.exports = function Login() {
+module.exports = function () {
 
   React.render(
     <LoginPage />,
