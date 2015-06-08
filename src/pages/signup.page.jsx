@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react');
-var TextMessage = require('../components/textmessage.react.jsx');
+var TextMessage = require('../components/textmessage.react');
 
 module.exports = function Signup() {
 

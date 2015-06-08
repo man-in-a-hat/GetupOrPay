@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react');
-var Menu = require('./menu.react.jsx');
+var Menu = require('./menu.react');
 
 var TextMessage = React.createClass({
   render: function() {

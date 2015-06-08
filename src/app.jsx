@@ -1,7 +1,8 @@
 'use strict';
 
-var LoginPage = require('./pages/login.page.jsx');
-var SignupPage = require('./pages/signup.page.jsx');
+var Router = require('director').Router;
+var LoginPage = require('./pages/login.page');
+var SignupPage = require('./pages/signup.page');
 
 var routes = {
   '/login': LoginPage,
