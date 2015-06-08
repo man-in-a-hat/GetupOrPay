@@ -20,8 +20,8 @@ var LoginPage = React.createClass({
           </Col>
         </Row>
         <form>
-          <Input type="text" placeholder="Email Address" />
-          <Input type="text" placeholder="Password" />
+          <Input type="email" placeholder="Email Address" />
+          <Input type="password" placeholder="Password" />
         </form>
         <Row>
           <Col xsOffset={3} xs={6}>
