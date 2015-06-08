@@ -50,13 +50,17 @@
 	var LoginPage = __webpack_require__(2);
 	var SignupPage = __webpack_require__(228);
 	var PaymentPage = __webpack_require__(229);
-	var DestinationPage = __webpack_require__(230);
+	var AccountPage = __webpack_require__(230);
+	var DestinationDetailsPage = __webpack_require__(232);
+	var DestinationPage = __webpack_require__(233);
 
 	var routes = {
 	  '/login': LoginPage,
 	  '/signup': SignupPage,
-	  '/payment': PaymentPage
-	  // '/destination': DestinationPage
+	  '/payment': PaymentPage,
+	  '/account': AccountPage,
+	  '/destination-details': DestinationDetailsPage,
+	  '/destination': DestinationPage
 	};
 
 	var router = Router(routes);
@@ -817,13 +821,13 @@
 	            React.createElement(Button, {href: "#/signup", block: true}, "Signup")
 	          )
 	        ), 
-	        React.createElement("form", null, 
+	        React.createElement("form", {className: "margin-spacious"}, 
 	          React.createElement(Input, {type: "email", placeholder: "Email Address"}), 
 	          React.createElement(Input, {type: "password", placeholder: "Password"})
 	        ), 
 	        React.createElement(Row, null, 
 	          React.createElement(Col, {xsOffset: 3, xs: 6}, 
-	            React.createElement(Button, {bsStyle: "primary", bsSize: "large", block: true}, "Login")
+	            React.createElement(Button, {href: "#/payment", bsStyle: "primary", bsSize: "large", block: true}, "Login")
 	          )
 	        )
 	      )
@@ -832,7 +836,7 @@
 
 	});
 
-	module.exports = function Login() {
+	module.exports = function () {
 
 	  React.render(
 	    React.createElement(LoginPage, null),
@@ -28647,7 +28651,7 @@
 	            React.createElement(Button, {bsStyle: "primary", block: true}, "Signup")
 	          )
 	        ), 
-	        React.createElement("form", null, 
+	        React.createElement("form", {className: "margin-spacious"}, 
 	          React.createElement(Input, {type: "text", placeholder: "Name"}), 
 	          React.createElement(Input, {type: "email", placeholder: "Email Address"}), 
 	          React.createElement(Input, {type: "password", placeholder: "Password"})
@@ -28663,7 +28667,7 @@
 
 	});
 
-	module.exports = function Signup() {
+	module.exports = function () {
 
 	  React.render(
 	    React.createElement(SignupPage, null),
@@ -28689,18 +28693,18 @@
 
 	  render: function() {
 	    return (
-	      React.createElement("div", {className: "container vcenter"}, 
+	      React.createElement("div", {className: "container vcenter text-center"}, 
 	        React.createElement(Row, null, 
-	          React.createElement("h3", {className: "text-center"}, "Payment data")
+	          React.createElement("h3", null, React.createElement(Label, null, "Payment data"))
 	        ), 
-	        React.createElement("form", null, 
+	        React.createElement("form", {className: "margin-spacious"}, 
 	          React.createElement(Input, {type: "number", placeholder: "Card Number"}), 
 	          React.createElement(Input, {type: "date", placeholder: "Expiration Date"}), 
 	          React.createElement(Input, {type: "number", placeholder: "CVC"})
 	        ), 
 	        React.createElement(Row, null, 
 	          React.createElement(Col, {xsOffset: 3, xs: 6}, 
-	            React.createElement(Button, {bsStyle: "primary", bsSize: "large", block: true}, "Save to Stripe")
+	            React.createElement(Button, {href: "#/account", bsStyle: "primary", bsSize: "large", block: true}, "Save to Stripe")
 	          )
 	        )
 	      )
@@ -28709,7 +28713,7 @@
 
 	});
 
-	module.exports = function Payment() {
+	module.exports = function () {
 
 	  React.render(
 	    React.createElement(PaymentPage, null),
@@ -28722,7 +28726,275 @@
 /* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
-	
+	'use strict';
+
+	var React = __webpack_require__(3);
+	var Input = __webpack_require__(159).Input;
+	var Button = __webpack_require__(159).Button;
+	var Label = __webpack_require__(159).Label;
+	var Row = __webpack_require__(159).Row;
+	var Col = __webpack_require__(159).Col;
+	var Table = __webpack_require__(159).Table;
+
+	var UpdateLocation = __webpack_require__(231);
+
+	var AccountPage = React.createClass({displayName: "AccountPage",
+
+	  dataRetrieved: true,
+	  isItTime: false,
+	  timeRemaining: 45,
+
+	  render: function() {
+	    var content;
+	    if (this.isItTime) {
+	      content = (
+	        React.createElement("div", null, 
+	          React.createElement("form", {className: "margin-spacious"}, 
+	            React.createElement(UpdateLocation, {bsSize: "large"})
+	          ), 
+	          React.createElement("h3", {className: "margin-spacious text-danger"}, this.timeRemaining, " minutes left"), 
+	          React.createElement(Button, {href: "#/destination-details", block: true}, "Details")
+	        )
+	      );
+	    } else if (!this.isItTime && !this.dataRetrieved) {
+	      content = (
+	        React.createElement("div", null, 
+	          React.createElement("form", {className: "margin-spacious"}, 
+	            React.createElement("h3", {className: "text-center", style: {color:"white"}}, "Empty...")
+	          ), 
+	          React.createElement(Row, null, 
+	            React.createElement(Col, {xsOffset: 3, xs: 6}, 
+	              React.createElement(Button, {href: "#/destination", bsStyle: "primary", bsSize: "large", block: true}, "Create")
+	            )
+	          )
+	        )
+	      );
+	    } else if (!this.isItTime && this.dataRetrieved) {
+	      content = (
+	        React.createElement("div", null, 
+	          React.createElement("form", {className: "margin-spacious"}, 
+	            React.createElement(Table, {striped: true, bordered: true}, 
+	              React.createElement("tbody", null, 
+	                React.createElement("tr", null, 
+	                  React.createElement("td", null, "Date"), 
+	                  React.createElement("td", null, "June 2nd")
+	                ), 
+	                React.createElement("tr", null, 
+	                  React.createElement("td", null, "Time"), 
+	                  React.createElement("td", null, "7am")
+	                ), 
+	                React.createElement("tr", null, 
+	                  React.createElement("td", null, "Location"), 
+	                  React.createElement("td", null, "555 W 5th")
+	                ), 
+	                React.createElement("tr", null, 
+	                  React.createElement("td", null, "Charge"), 
+	                  React.createElement("td", null, "$20")
+	                )
+	              )
+	            )
+	          ), 
+	          React.createElement(Row, null, 
+	            React.createElement(Col, {xs: 6}, 
+	              React.createElement(Button, {href: "#/destination", bsStyle: "primary", block: true}, "Edit")
+	            ), 
+	            React.createElement(Col, {xs: 6}, 
+	              React.createElement(Button, {href: "#/account", block: true}, "Delete")
+	            )
+	          )
+	        )
+	      );
+	    }
+
+	    return (
+	      React.createElement("div", {className: "fill-window"}, 
+	        React.createElement("div", {className: "top-right"}, 
+	          React.createElement(Button, {href: "#/payment", bsSize: "xsmall"}, React.createElement("span", {className: "glyphicon glyphicon-usd"}))
+	        ), 
+	        React.createElement("div", {className: "container vcenter text-center"}, 
+	          React.createElement(Row, null, 
+	            React.createElement("h3", null, React.createElement(Label, null, "Your Destination"))
+	          ), 
+	          content
+	        )
+	      )
+	    );
+	  }
+
+	});
+
+	module.exports = function () {
+
+	  React.render(
+	    React.createElement(AccountPage, null),
+	    document.getElementById('container')
+	  );
+
+	}
+
+/***/ },
+/* 231 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(3);
+	var Button = __webpack_require__(159).Button;
+
+	var UpdateLocationComponent = React.createClass({displayName: "UpdateLocationComponent",
+
+		propTypes: {
+			bsSize: React.PropTypes.string
+		},
+
+		render: function() {
+			return (
+				React.createElement(Button, {href: "#/account", bsStyle: "success", bsSize: this.props.bsSize}, "Update Location")
+			);
+		}
+
+	});
+
+	module.exports = UpdateLocationComponent;
+
+/***/ },
+/* 232 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(3);
+	var Input = __webpack_require__(159).Input;
+	var Button = __webpack_require__(159).Button;
+	var Label = __webpack_require__(159).Label;
+	var Row = __webpack_require__(159).Row;
+	var Col = __webpack_require__(159).Col;
+	var Table = __webpack_require__(159).Table;
+
+	var UpdateLocation = __webpack_require__(231);
+
+	var DestinationDetailsPage = React.createClass({displayName: "DestinationDetailsPage",
+
+	  timeRemaining: 45,
+
+	  render: function() {
+	    return (
+	      React.createElement("div", {className: "container vcenter text-center"}, 
+	        React.createElement(Row, null, 
+	          React.createElement("h3", null, React.createElement(Label, null, "Destination Details"))
+	        ), 
+	        React.createElement("form", {className: "margin-spacious"}, 
+	          React.createElement(Table, {striped: true, bordered: true}, 
+	            React.createElement("tbody", null, 
+	              React.createElement("tr", null, 
+	                React.createElement("td", null, "Date"), 
+	                React.createElement("td", null, "June 2nd")
+	              ), 
+	              React.createElement("tr", null, 
+	                React.createElement("td", null, "Time"), 
+	                React.createElement("td", null, "7am")
+	              ), 
+	              React.createElement("tr", null, 
+	                React.createElement("td", null, "Location"), 
+	                React.createElement("td", null, "555 W 5th")
+	              ), 
+	              React.createElement("tr", null, 
+	                React.createElement("td", null, "Charge"), 
+	                React.createElement("td", null, "$20")
+	              )
+	            )
+	          )
+	        ), 
+	        React.createElement(Row, {className: "margin-spacious"}, 
+	          React.createElement("h3", {className: "text-danger"}, this.timeRemaining, " minutes left")
+	        ), 
+	        React.createElement(UpdateLocation, null)
+	      )
+	    );
+	  }
+
+	});
+
+	module.exports = function () {
+
+	  React.render(
+	    React.createElement(DestinationDetailsPage, null),
+	    document.getElementById('container')
+	  );
+
+	}
+
+/***/ },
+/* 233 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(3);
+	var Input = __webpack_require__(159).Input;
+	var Button = __webpack_require__(159).Button;
+	var Label = __webpack_require__(159).Label;
+	var Row = __webpack_require__(159).Row;
+	var Col = __webpack_require__(159).Col;
+	var Table = __webpack_require__(159).Table;
+
+	var UpdateLocation = __webpack_require__(231);
+
+	var AccountPage = React.createClass({displayName: "AccountPage",
+
+	  isNew: false,
+
+	  render: function() {
+	    if (this.isNew) {
+	      return (
+	        React.createElement("div", {className: "container vcenter text-center"}, 
+	          React.createElement(Row, null, 
+	            React.createElement("h3", null, React.createElement(Label, null, "Create Destination"))
+	          ), 
+	          React.createElement("form", {className: "margin-spacious"}, 
+	            React.createElement(Input, {type: "date", placeholder: "Date"}), 
+	            React.createElement(Input, {type: "time", placeholder: "Time"}), 
+	            React.createElement(Input, {type: "text", placeholder: "Location"}), 
+	            React.createElement(Input, {type: "number", placeholder: "Charge"})
+	          ), 
+	          React.createElement(Button, {href: "#/account", bsStyle: "primary", bsSize: "large"}, "Create")
+	        )
+	      );
+	    } else {
+	      return (
+	        React.createElement("div", {className: "container vcenter text-center"}, 
+	          React.createElement(Row, null, 
+	            React.createElement("h3", null, React.createElement(Label, null, "Edit Destination"))
+	          ), 
+	          React.createElement("form", {className: "margin-spacious"}, 
+	            React.createElement(Input, {type: "date", placeholder: "Date"}), 
+	            React.createElement(Input, {type: "time", placeholder: "Time"}), 
+	            React.createElement(Input, {type: "text", placeholder: "Location"}), 
+	            React.createElement(Input, {type: "number", placeholder: "Charge"})
+	          ), 
+	          React.createElement(Row, null, 
+	            React.createElement(Col, {xs: 6}, 
+	              React.createElement(Button, {href: "#/account", bsStyle: "primary", block: true}, "Edit")
+	            ), 
+	            React.createElement(Col, {xs: 6}, 
+	              React.createElement(Button, {href: "#/account", block: true}, "Delete")
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }
+
+	});
+
+	module.exports = function () {
+
+	  React.render(
+	    React.createElement(AccountPage, null),
+	    document.getElementById('container')
+	  );
+
+	}
 
 /***/ }
 /******/ ]);
