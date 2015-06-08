@@ -15,7 +15,7 @@ var PaymentPage = React.createClass({
         <Row>
           <h3 className="text-center"><Label>Payment data</Label></h3>
         </Row>
-        <form>
+        <form className="margin-spacious">
           <Input type="number" placeholder="Card Number" />
           <Input type="date" placeholder="Expiration Date" />
           <Input type="number" placeholder="CVC" />

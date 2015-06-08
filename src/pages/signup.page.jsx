@@ -19,7 +19,7 @@ var SignupPage = React.createClass({
             <Button bsStyle="primary" block>Signup</Button>
           </Col>
         </Row>
-        <form>
+        <form className="margin-spacious">
           <Input type="text" placeholder="Name" />
           <Input type="email" placeholder="Email Address" />
           <Input type="password" placeholder="Password" />
