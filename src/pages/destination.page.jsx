@@ -10,86 +10,57 @@ var Table = require('react-bootstrap').Table;
 
 var UpdateLocation = require('../components/updatelocation.react.jsx');
 
-var DestinationPage = React.createClass({
+var AccountPage = React.createClass({
 
-  dataRetrieved: true,
-  isItTime: true,
+  isNew: false,
 
   render: function() {
-    var content;
-    if (this.isItTime) {
-      content = (
-        <div className="text-center">
-          <form className="margin-spacious">
-            <UpdateLocation bsSize="large"/>
-          </form>
-          <h3 className="margin-spacious text-warning">45 minutes left</h3>
-          <Button block>Details</Button>
-        </div>
-      );
-    } else if (!this.isItTime && !this.dataRetrieved) {
-      content = (
-        <div>
-          <form className="margin-spacious">
-            <h3 className="text-center" style={{color:"white"}}>Empty...</h3>
-          </form>
+    if (this.isNew) {
+      return (
+        <div className="container vcenter text-center">
           <Row>
-            <Col xsOffset={3} xs={6}>
-              <Button bsStyle="primary" bsSize="large" block>Create</Button>
-            </Col>
+            <h3><Label>Create Destination</Label></h3>
           </Row>
+          <form className="margin-spacious">
+            <Input type="date" placeholder="Date" />
+            <Input type="time" placeholder="Time" />
+            <Input type="text" placeholder="Location" />
+            <Input type="number" placeholder="Charge" />
+          </form>
+          <Button href="#/account" bsStyle="primary" bsSize="large">Create</Button>
         </div>
       );
-    } else if (!this.isItTime && this.dataRetrieved) {
-      content = (
-        <div>
+    } else {
+      return (
+        <div className="container vcenter text-center">
+          <Row>
+            <h3><Label>Edit Destination</Label></h3>
+          </Row>
           <form className="margin-spacious">
-            <Table striped bordered>
-              <tbody>
-                <tr>
-                  <td>Date</td>
-                  <td>June 2nd</td>
-                </tr>
-                <tr>
-                  <td>Time</td>
-                  <td>7am</td>
-                </tr>
-                <tr>
-                  <td>Location</td>
-                  <td>555 W 5th</td>
-                </tr>
-                <tr>
-                  <td>Charge</td>
-                  <td>$20</td>
-                </tr>
-              </tbody>
-            </Table>
+            <Input type="date" placeholder="Date" />
+            <Input type="time" placeholder="Time" />
+            <Input type="text" placeholder="Location" />
+            <Input type="number" placeholder="Charge" />
           </form>
           <Row>
-            <Col xsOffset={3} xs={6}>
-              <Button bsStyle="primary" bsSize="large" block>Create</Button>
+            <Col xs={6}>
+              <Button href="#/account" bsStyle="primary" block>Edit</Button>
+            </Col>
+            <Col xs={6}>
+              <Button href="#/account" block>Delete</Button>
             </Col>
           </Row>
         </div>
       );
     }
-
-    return (
-      <div className="container vcenter">
-        <Row>
-          <h3 className="text-center"><Label>Your Destination</Label></h3>
-        </Row>
-        {content}
-      </div>
-    );
   }
 
 });
 
-module.exports = function Destination() {
+module.exports = function Account() {
 
   React.render(
-    <DestinationPage />,
+    <AccountPage />,
     document.getElementById('container')
   );
 
