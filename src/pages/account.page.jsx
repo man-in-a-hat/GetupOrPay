@@ -13,7 +13,7 @@ var UpdateLocation = require('../components/updatelocation.react.jsx');
 var AccountPage = React.createClass({
 
   dataRetrieved: true,
-  isItTime: true,
+  isItTime: false,
   timeRemaining: 45,
 
   render: function() {
@@ -79,11 +79,16 @@ var AccountPage = React.createClass({
     }
 
     return (
-      <div className="container vcenter text-center">
-        <Row>
-          <h3><Label>Your Destination</Label></h3>
-        </Row>
-        {content}
+      <div className="fill-window">
+        <div className="top-right">
+          <Button href="#/payment" bsSize="xsmall"><span className="glyphicon glyphicon-usd"></span></Button>
+        </div>
+        <div className="container vcenter text-center">
+          <Row>
+            <h3><Label>Your Destination</Label></h3>
+          </Row>
+          {content}
+        </div>
       </div>
     );
   }
