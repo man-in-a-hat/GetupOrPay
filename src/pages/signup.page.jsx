@@ -35,7 +35,7 @@ var SignupPage = React.createClass({
 
 });
 
-module.exports = function Signup() {
+module.exports = function () {
 
   React.render(
     <SignupPage />,

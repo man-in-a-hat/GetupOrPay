@@ -57,7 +57,7 @@ var AccountPage = React.createClass({
 
 });
 
-module.exports = function Account() {
+module.exports = function () {
 
   React.render(
     <AccountPage />,

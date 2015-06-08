@@ -13,7 +13,8 @@ var UpdateLocation = require('../components/updatelocation.react.jsx');
 var AccountPage = React.createClass({
 
   dataRetrieved: true,
-  isItTime: false,
+  isItTime: true,
+  timeRemaining: 45,
 
   render: function() {
     var content;
@@ -23,7 +24,7 @@ var AccountPage = React.createClass({
           <form className="margin-spacious">
             <UpdateLocation bsSize="large"/>
           </form>
-          <h3 className="margin-spacious text-warning">45 minutes left</h3>
+          <h3 className="margin-spacious text-danger">{this.timeRemaining} minutes left</h3>
           <Button href="#/destination-details" block>Details</Button>
         </div>
       );
@@ -89,7 +90,7 @@ var AccountPage = React.createClass({
 
 });
 
-module.exports = function Account() {
+module.exports = function () {
 
   React.render(
     <AccountPage />,

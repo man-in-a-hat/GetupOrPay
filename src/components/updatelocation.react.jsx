@@ -11,7 +11,7 @@ var UpdateLocationComponent = React.createClass({
 
 	render: function() {
 		return (
-			<Button bsStyle="success" bsSize={this.props.bsSize}>Update Location</Button>
+			<Button href="#/account" bsStyle="success" bsSize={this.props.bsSize}>Update Location</Button>
 		);
 	}
 

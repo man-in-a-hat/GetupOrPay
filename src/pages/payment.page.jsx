@@ -31,7 +31,7 @@ var PaymentPage = React.createClass({
 
 });
 
-module.exports = function Payment() {
+module.exports = function () {
 
   React.render(
     <PaymentPage />,

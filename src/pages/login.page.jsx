@@ -34,7 +34,7 @@ var LoginPage = React.createClass({
 
 });
 
-module.exports = function Login() {
+module.exports = function () {
 
   React.render(
     <LoginPage />,
