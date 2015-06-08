@@ -27,7 +27,7 @@ var AccountPage = React.createClass({
             <Input type="text" placeholder="Location" />
             <Input type="number" placeholder="Charge" />
           </form>
-          <Button href="#/account" bsStyle="primary" bsSize="large">Create</Button>
+          <Button href="#/account" bsStyle="primary" bsSize="large">Save</Button>
         </div>
       );
     } else {
@@ -44,7 +44,7 @@ var AccountPage = React.createClass({
           </form>
           <Row>
             <Col xs={6}>
-              <Button href="#/account" bsStyle="primary" block>Edit</Button>
+              <Button href="#/account" bsStyle="primary" block>Save</Button>
             </Col>
             <Col xs={6}>
               <Button href="#/account" block>Delete</Button>
