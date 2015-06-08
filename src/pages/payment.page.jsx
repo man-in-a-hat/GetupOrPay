@@ -1,31 +1,28 @@
 'use strict';
 
 var React = require('react');
+var Label = require('react-bootstrap').Label;
 var Input = require('react-bootstrap').Input;
 var Button = require('react-bootstrap').Button;
 var Row = require('react-bootstrap').Row;
 var Col = require('react-bootstrap').Col;
 
-var LoginPage = React.createClass({
+var PaymentPage = React.createClass({
 
   render: function() {
     return (
       <div className="container vcenter">
         <Row>
-          <Col xs={6}>
-            <Button bsStyle="primary" block>Login</Button>
-          </Col>
-          <Col xs={6}>
-            <Button href="#/signup" block>Signup</Button>
-          </Col>
+          <h3 className="text-center">Payment data</h3>
         </Row>
         <form>
-          <Input type="email" placeholder="Email Address" />
-          <Input type="password" placeholder="Password" />
+          <Input type="number" placeholder="Card Number" />
+          <Input type="date" placeholder="Expiration Date" />
+          <Input type="number" placeholder="CVC" />
         </form>
         <Row>
           <Col xsOffset={3} xs={6}>
-            <Button bsStyle="primary" bsSize="large" block>Login</Button>
+            <Button bsStyle="primary" bsSize="large" block>Save to Stripe</Button>
           </Col>
         </Row>
       </div>
@@ -34,10 +31,10 @@ var LoginPage = React.createClass({
 
 });
 
-module.exports = function Login() {
+module.exports = function Payment() {
 
   React.render(
-    <LoginPage />,
+    <PaymentPage />,
     document.getElementById('container')
   );
 
