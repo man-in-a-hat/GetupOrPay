@@ -49,10 +49,14 @@
 	var Router = __webpack_require__(1).Router;
 	var LoginPage = __webpack_require__(2);
 	var SignupPage = __webpack_require__(228);
+	var PaymentPage = __webpack_require__(229);
+	var DestinationPage = __webpack_require__(230);
 
 	var routes = {
 	  '/login': LoginPage,
-	  '/signup': SignupPage
+	  '/signup': SignupPage,
+	  '/payment': PaymentPage
+	  // '/destination': DestinationPage
 	};
 
 	var router = Router(routes);
@@ -810,12 +814,12 @@
 	            React.createElement(Button, {bsStyle: "primary", block: true}, "Login")
 	          ), 
 	          React.createElement(Col, {xs: 6}, 
-	            React.createElement(Button, {block: true}, "Signup")
+	            React.createElement(Button, {href: "#/signup", block: true}, "Signup")
 	          )
 	        ), 
 	        React.createElement("form", null, 
-	          React.createElement(Input, {type: "text", placeholder: "Email Address"}), 
-	          React.createElement(Input, {type: "text", placeholder: "Password"})
+	          React.createElement(Input, {type: "email", placeholder: "Email Address"}), 
+	          React.createElement(Input, {type: "password", placeholder: "Password"})
 	        ), 
 	        React.createElement(Row, null, 
 	          React.createElement(Col, {xsOffset: 3, xs: 6}, 
@@ -28625,12 +28629,44 @@
 	'use strict';
 
 	var React = __webpack_require__(3);
-	var TextMessage = __webpack_require__(229);
+	var Input = __webpack_require__(159).Input;
+	var Button = __webpack_require__(159).Button;
+	var Row = __webpack_require__(159).Row;
+	var Col = __webpack_require__(159).Col;
+
+	var SignupPage = React.createClass({displayName: "SignupPage",
+
+	  render: function() {
+	    return (
+	      React.createElement("div", {className: "container vcenter"}, 
+	        React.createElement(Row, null, 
+	          React.createElement(Col, {xs: 6}, 
+	            React.createElement(Button, {href: "#/login", block: true}, "Login")
+	          ), 
+	          React.createElement(Col, {xs: 6}, 
+	            React.createElement(Button, {bsStyle: "primary", block: true}, "Signup")
+	          )
+	        ), 
+	        React.createElement("form", null, 
+	          React.createElement(Input, {type: "text", placeholder: "Name"}), 
+	          React.createElement(Input, {type: "email", placeholder: "Email Address"}), 
+	          React.createElement(Input, {type: "password", placeholder: "Password"})
+	        ), 
+	        React.createElement(Row, null, 
+	          React.createElement(Col, {xsOffset: 3, xs: 6}, 
+	            React.createElement(Button, {href: "#/payment", bsStyle: "primary", bsSize: "large", block: true}, "Signup")
+	          )
+	        )
+	      )
+	    );
+	  }
+
+	});
 
 	module.exports = function Signup() {
 
 	  React.render(
-	    React.createElement(TextMessage, {text: "Sign up page"}),
+	    React.createElement(SignupPage, null),
 	    document.getElementById('container')
 	  );
 
@@ -28643,44 +28679,50 @@
 	'use strict';
 
 	var React = __webpack_require__(3);
-	var Menu = __webpack_require__(230);
+	var Label = __webpack_require__(159).Label;
+	var Input = __webpack_require__(159).Input;
+	var Button = __webpack_require__(159).Button;
+	var Row = __webpack_require__(159).Row;
+	var Col = __webpack_require__(159).Col;
 
-	var TextMessage = React.createClass({displayName: "TextMessage",
+	var PaymentPage = React.createClass({displayName: "PaymentPage",
+
 	  render: function() {
 	    return (
-	      React.createElement("div", null, 
-	        React.createElement(Menu, null), 
-	        React.createElement("h1", null, this.props.text)
+	      React.createElement("div", {className: "container vcenter"}, 
+	        React.createElement(Row, null, 
+	          React.createElement("h3", {className: "text-center"}, "Payment data")
+	        ), 
+	        React.createElement("form", null, 
+	          React.createElement(Input, {type: "number", placeholder: "Card Number"}), 
+	          React.createElement(Input, {type: "date", placeholder: "Expiration Date"}), 
+	          React.createElement(Input, {type: "number", placeholder: "CVC"})
+	        ), 
+	        React.createElement(Row, null, 
+	          React.createElement(Col, {xsOffset: 3, xs: 6}, 
+	            React.createElement(Button, {bsStyle: "primary", bsSize: "large", block: true}, "Save to Stripe")
+	          )
+	        )
 	      )
 	    );
 	  }
+
 	});
 
-	module.exports = TextMessage;
+	module.exports = function Payment() {
+
+	  React.render(
+	    React.createElement(PaymentPage, null),
+	    document.getElementById('container')
+	  );
+
+	}
 
 /***/ },
 /* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	var React = __webpack_require__(3);
-	var Button = __webpack_require__(159).Button;
-
-	var Menu = React.createClass({displayName: "Menu",
-	  render: function() {
-	    return (
-	      React.createElement("div", null, 
-	        React.createElement(Button, null, "Default"), 
-	        React.createElement("a", {href: "#/login"}, "Log in"), 
-	        "|", 
-	        React.createElement("a", {href: "#/signup"}, "Sign up")
-	      )
-	    );
-	  }
-	});
-
-	module.exports = Menu;
+	
 
 /***/ }
 /******/ ]);
