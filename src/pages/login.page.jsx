@@ -16,7 +16,7 @@ var LoginPage = React.createClass({
             <Button bsStyle="primary" block>Login</Button>
           </Col>
           <Col xs={6}>
-            <Button block>Signup</Button>
+            <Button href="#/signup" block>Signup</Button>
           </Col>
         </Row>
         <form>
