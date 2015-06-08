@@ -1,0 +1,26 @@
+html, body, #container {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-image: url(background.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.vcenter {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+form {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.form-group {
+  margin-top: 15px;
+}
