@@ -1,6 +1,7 @@
-"Get up or pay" app
+# Get up or Pay
+That's probably a bit rude, but that was our name
 
-How to develop:
+## Usage
  * install webpack: "npm install -g webpack",
  * install packages: "npm install",
  * go to the root folder of the project,
